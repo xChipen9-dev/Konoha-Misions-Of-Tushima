@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Konoha Missions Of Tushima</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="auth-content">
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-inner">
+      <div class="crest">
+        <div class="crest-ring"></div>
+        <div class="crest-mark">侍</div>
+      </div>
+
+      <h1 class="hero-title">Konoha Missions Of Tushima</h1>
+      <p class="hero-subtitle">
+        Honra. Disciplina. Progreso. Acepta misiones y gana experiencia.
+      </p>
+
+      <div class="hero-divider"></div>
+    </div>
+
+    <div class="mist"></div>
+    <div class="leaves"></div>
+  </section>
+
+  <div class="auth-wrap ion-padding">
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button value="login">
+        <ion-label>Login</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="register">
+        <ion-label>Registro</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div style="height: 14px;"></div>
+
+    <ion-card class="auth-card">
+      <ion-card-header>
+        <ion-card-title>
+          {{ segment === 'login' ? 'Acceso Ninja' : 'Registro Ninja' }}
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Usuario</ion-label>
+          <ion-input [(ngModel)]="username" placeholder="Sensei"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input [(ngModel)]="password" type="password" placeholder="1234"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="segment === 'register'">
+          <ion-label position="stacked">Rango</ion-label>
+          <ion-select [(ngModel)]="rank" interface="popover">
+            <ion-select-option *ngFor="let r of ranks" [value]="r">{{ r }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <div style="height: 18px;"></div>
+
+        <ion-button expand="block" (click)="submit()">
+          {{ segment === 'login' ? 'Entrar' : 'Crear Ninja' }}
+        </ion-button>
+
+        
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

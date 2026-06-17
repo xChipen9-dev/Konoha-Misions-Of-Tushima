@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tablón de Misiones</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="reload()">
+<ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="status" (ionChange)="applyFilters()">
+      <ion-segment-button value="DISPONIBLE">
+        <ion-label>Disponibles</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="COMPLETADA">
+        <ion-label>Completadas</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-item lines="none">
+      <ion-label>Rango</ion-label>
+      <ion-select [(ngModel)]="rank" (ionChange)="applyFilters()" interface="popover">
+        <ion-select-option [value]="''">Todos</ion-select-option>
+        <ion-select-option *ngFor="let r of ranks" [value]="r">{{ r }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="reload($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-list *ngIf="missions.length > 0">
+  <ion-item
+    class="mission-item"
+    *ngFor="let m of missions"
+    button
+    detail
+    (click)="openDetail(m)"
+  >
+    <ion-label>
+      <div class="title-row">
+<h2>{{ loreTitle(m) }}</h2>
+        <ion-badge [color]="badgeColor(m.rankRequirement)">
+          Rango {{ m.rankRequirement }}
+        </ion-badge>
+      </div>
+
+<p class="desc">{{ loreDesc(m) }}</p>
+
+      <div class="meta">
+        <ion-chip>
+          <ion-icon name="cash-outline"></ion-icon>
+          <ion-label>{{ m.reward }} XP</ion-label>
+        </ion-chip>
+
+        <ion-chip *ngIf="m.acceptedByNinjaName">
+          <ion-icon name="person-circle-outline"></ion-icon>
+          <ion-label>{{ m.acceptedByNinjaName }}</ion-label>
+        </ion-chip>
+      </div>
+    </ion-label>
+
+    <!-- BOTÓN ACEPTAR: NO debe disparar el click del item -->
+    <ion-button
+      slot="end"
+      type="button"
+      color="primary"
+      [disabled]="!canAccept(m)"
+      (click)="accept(m, $event)"
+    >
+      Aceptar
+    </ion-button>
+  </ion-item>
+</ion-list>
+
+
+  <div class="empty" *ngIf="missions.length === 0">
+    <ion-icon name="leaf-outline"></ion-icon>
+    <h3>Sin resultados</h3>
+    <p>No hay misiones con esos filtros.</p>
+  </div>
+</ion-content>

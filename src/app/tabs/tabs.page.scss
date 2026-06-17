@@ -1,0 +1,188 @@
+.profile-content {
+  --padding-top: 10px;
+}
+
+.profile-hero {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(214,200,162,0.12);
+  box-shadow: 0 22px 60px rgba(0,0,0,0.70);
+  background:
+    radial-gradient(900px 420px at 20% 0%, rgba(139,30,30,0.22), transparent 60%),
+    radial-gradient(850px 420px at 90% 10%, rgba(214,200,162,0.14), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.45));
+  backdrop-filter: blur(10px);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.62)),
+    radial-gradient(850px 400px at 50% 0%, rgba(255,255,255,0.08), transparent 55%);
+  pointer-events: none;
+}
+
+.hero-mist {
+  position: absolute;
+  inset: -40px -80px -20px -80px;
+  background:
+    radial-gradient(closest-side at 20% 60%, rgba(255,255,255,0.10), transparent 60%),
+    radial-gradient(closest-side at 70% 40%, rgba(255,255,255,0.08), transparent 65%),
+    radial-gradient(closest-side at 50% 80%, rgba(255,255,255,0.06), transparent 70%);
+  filter: blur(12px);
+  opacity: 0.55;
+  animation: mistDrift 10s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 16px;
+}
+
+.avatar-frame {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  display: grid;
+  place-items: center;
+}
+
+.avatar {
+  width: 102px;
+  height: 102px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(214,200,162,0.18);
+  box-shadow: 0 16px 34px rgba(0,0,0,0.65);
+  position: relative;
+  z-index: 2;
+}
+
+.avatar-ring,
+.avatar-ring-2 {
+  position: absolute;
+  inset: 0;
+  border-radius: 26px;
+  pointer-events: none;
+}
+
+.avatar-ring {
+  border: 1px solid rgba(214,200,162,0.20);
+  opacity: 0.85;
+}
+
+.avatar-ring-2 {
+  inset: -8px;
+  border-radius: 30px;
+  border: 1px solid rgba(139,30,30,0.25);
+  box-shadow: 0 0 0 14px rgba(139,30,30,0.06);
+  opacity: 0.75;
+}
+
+.clan-kicker {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 6px;
+}
+
+.name {
+  margin: 0 0 10px;
+  font-family: var(--km-font-title);
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  font-size: 1.35rem;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.chip {
+  border-radius: 999px;
+  padding: 8px 10px;
+  border: 1px solid rgba(214,200,162,0.16);
+  background: rgba(255,255,255,0.03);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  font-size: 0.70rem;
+}
+
+.chip.parchment {
+  color: rgba(214,200,162,0.95);
+}
+
+.chip.ink {
+  color: rgba(231,226,214,0.92);
+  border-color: rgba(255,255,255,0.10);
+}
+
+.chip.success {
+  border-color: rgba(59,178,115,0.22);
+}
+
+.progress-block {
+  margin-top: 8px;
+  padding: 12px 12px 10px;
+  border-radius: 18px;
+  border: 1px solid rgba(214,200,162,0.10);
+  background: rgba(255,255,255,0.03);
+}
+
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.92rem;
+  opacity: 0.88;
+  margin-bottom: 10px;
+}
+
+.percent {
+  font-family: var(--km-font-title);
+  letter-spacing: 0.08em;
+}
+
+ion-progress-bar {
+  --background: rgba(255,255,255,0.06);
+  --progress-background: rgba(139,30,30,0.75);
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: 0 14px 28px rgba(139,30,30,0.15);
+}
+
+.progress-foot {
+  margin-top: 10px;
+}
+
+.small {
+  display: block;
+  opacity: 0.72;
+  font-size: 0.86rem;
+  text-align: center;
+}
+
+.card {
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(214,200,162,0.10);
+}
+
+@keyframes mistDrift {
+  from { transform: translateX(0) translateY(0); }
+  to   { transform: translateX(-18px) translateY(8px); }
+}

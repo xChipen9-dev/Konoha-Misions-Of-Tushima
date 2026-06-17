@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Detalle de Misión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="mission as m">
+
+  <div class="scroll">
+    <div class="scroll-top"></div>
+
+    <div class="scroll-body">
+      <div class="scroll-header">
+        <div class="kicker">Tablón Oficial</div>
+        <h1 class="title">{{ m.title }}</h1>
+
+        <div class="badges">
+          <ion-badge class="badge parchment">Rango {{ m.rankRequirement }}</ion-badge>
+          <ion-badge class="badge ink" style="margin-left:8px;">
+            {{ statusLabel() }}
+          </ion-badge>
+        </div>
+
+        <div class="divider"></div>
+      </div>
+
+      <div class="scroll-content">
+        <p class="desc">{{ m.description }}</p>
+
+        <div class="meta">
+          <div class="meta-pill">
+            <ion-icon name="cash-outline"></ion-icon>
+            <span><strong>{{ m.reward }}</strong> XP</span>
+          </div>
+
+          <div class="meta-pill" *ngIf="m.acceptedByNinjaName">
+            <ion-icon name="person-circle-outline"></ion-icon>
+            <span>Asignada a <strong>{{ m.acceptedByNinjaName }}</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <ion-card class="state-card done" *ngIf="isCompleted()">
+        <ion-card-content>
+          <div class="state-row">
+            <ion-icon name="shield-checkmark-outline"></ion-icon>
+            <div>
+              <div class="state-title">Misión completada</div>
+              <div class="state-sub">Tu honor aumenta. ✅</div>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="report-card" *ngIf="!isCompleted() && canReport()">
+        <ion-card-header>
+          <ion-card-title>Informe</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="stacked">Informe</ion-label>
+            <ion-textarea
+              [(ngModel)]="reportText"
+              placeholder="Ej: Objetivo completado sin bajas..."
+              autoGrow="true"
+            ></ion-textarea>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">URL evidencia</ion-label>
+            <ion-input [(ngModel)]="evidenceImageUrl"></ion-input>
+          </ion-item>
+
+          <div style="height: 14px;"></div>
+
+          <ion-button class="seal-btn" expand="block" color="primary" (click)="sendReport()">
+            <span class="seal-text">Sellar Reporte</span>
+          </ion-button>
+
+          
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="state-card locked" *ngIf="!isCompleted() && isAcceptedLike() && !isMine()">
+        <ion-card-content>
+          <div class="state-row">
+            <ion-icon name="person-circle-outline"></ion-icon>
+            <div>
+              <div class="state-title">Misión en curso</div>
+              <div class="state-sub">Está asignada a otro shinobi.</div>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="state-card info" *ngIf="m.status === 'DISPONIBLE'">
+        <ion-card-content>
+          <div class="state-row">
+            <ion-icon name="leaf-outline"></ion-icon>
+            <div>
+              <div class="state-title">Disponible</div>
+              <div class="state-sub">Vuelve al tablón para aceptarla.</div>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div class="scroll-bottom"></div>
+  </div>
+</ion-content>

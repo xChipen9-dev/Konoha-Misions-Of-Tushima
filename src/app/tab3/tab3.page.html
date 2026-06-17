@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="reload()">
+        <ion-icon name="refresh" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding profile-content">
+  <div class="profile-hero" *ngIf="ninja as n">
+    <div class="hero-overlay"></div>
+    <div class="hero-mist"></div>
+
+    <div class="hero-inner">
+      <div class="avatar-frame">
+        <img class="avatar" [src]="avatarUrl" alt="avatar" />
+        <div class="avatar-ring"></div>
+        <div class="avatar-ring-2"></div>
+      </div>
+
+      <div class="hero-info">
+        <div class="clan-kicker">Shinobi registrado</div>
+        <h1 class="name">{{ n.username }}</h1>
+
+        <div class="chips">
+          <ion-badge class="chip parchment">Rango {{ stats?.rank ?? n.rank }}</ion-badge>
+          <ion-badge class="chip ink">{{ stats?.xp ?? 0 }} XP</ion-badge>
+          <ion-badge class="chip success">{{ stats?.missionsCompleted ?? 0 }} completadas</ion-badge>
+        </div>
+
+        <div class="progress-block">
+          <div class="progress-top">
+            <span>Progreso (misiones)</span>
+            <span class="percent">{{ progressPercent }}%</span>
+          </div>
+
+          <ion-progress-bar [value]="progressValue"></ion-progress-bar>
+
+          <div class="progress-foot">
+            <span class="small">
+              Persevera: el viento guía a los que no abandonan.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ion-card *ngIf="!ninja" class="card">
+    <ion-card-content>
+      <div style="opacity:.85; text-align:center;">
+        No hay sesión activa. Vuelve a iniciar sesión.
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div style="height: 14px;"></div>
+
+  <ion-button expand="block" color="danger" fill="outline" (click)="logout()" [disabled]="!ninja">
+    Cerrar sesión
+  </ion-button>
+</ion-content>

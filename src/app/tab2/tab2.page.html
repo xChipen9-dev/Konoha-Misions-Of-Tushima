@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis Misiones</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="reload()">
+<ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="status" (ionChange)="reload()">
+      <ion-segment-button value="ACEPTADA">
+        <ion-label>Aceptadas</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="COMPLETADA">
+        <ion-label>Completadas</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngIf="missions.length > 0">
+    <ion-item *ngFor="let m of missions" button detail (click)="openDetail(m.id)">
+  <ion-label>
+    <h2>{{ loreTitle(m) }}</h2>
+<p>{{ loreDesc(m) }}</p>
+
+    <p>
+      <ion-badge>Rango {{ m.rankRequirement }}</ion-badge>
+      <ion-badge color="medium" style="margin-left:8px;">{{ m.status }}</ion-badge>
+    </p>
+  </ion-label>
+
+  <ion-button
+    *ngIf="status === 'ACEPTADA'"
+    slot="end"
+    color="danger"
+    fill="outline"
+    (click)="remove(m.id, $event)"
+  >
+    Quitar
+  </ion-button>
+</ion-item>
+
+  </ion-list>
+
+  <div class="empty" *ngIf="missions.length === 0">
+  <ion-icon name="leaf-outline"></ion-icon>
+  <h3>Sin misiones</h3>
+  <p>No tienes misiones en este estado todavía.</p>
+</div>
+
+</ion-content>

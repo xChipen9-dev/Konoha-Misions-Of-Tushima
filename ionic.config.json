@@ -1,0 +1,7 @@
+{
+  "name": "konoha-missions",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

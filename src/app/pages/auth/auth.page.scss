@@ -1,0 +1,165 @@
+.auth-content {
+  --padding-top: 0px;
+}
+
+.hero {
+  position: relative;
+  height: 38vh;
+  min-height: 260px;
+  overflow: hidden;
+
+  background:
+    radial-gradient(900px 420px at 15% 10%, rgba(139,30,30,0.35), transparent 60%),
+    radial-gradient(700px 360px at 80% 20%, rgba(214,200,162,0.18), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.92)),
+    url('/src/assets/tsushima/fondo2.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.85)),
+    radial-gradient(900px 400px at 50% 0%, rgba(255,255,255,0.10), transparent 60%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 18px 18px 12px;
+}
+
+.crest {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 10px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.crest-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(214,200,162,0.35);
+  background: rgba(255,255,255,0.03);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.55);
+}
+
+.crest-mark {
+  font-family: var(--km-font-title);
+  font-size: 26px;
+  letter-spacing: 0.08em;
+  color: rgba(214,200,162,0.95);
+  text-shadow: 0 10px 30px rgba(0,0,0,0.7);
+}
+
+.hero-title {
+  margin: 6px 0 6px;
+  font-family: var(--km-font-title);
+  letter-spacing: 0.06em;
+  font-size: 1.35rem;
+}
+
+.hero-subtitle {
+  margin: 0 auto;
+  max-width: 520px;
+  opacity: 0.85;
+  line-height: 1.35;
+  font-size: 0.95rem;
+}
+
+.hero-divider {
+  width: 160px;
+  height: 1px;
+  margin: 14px auto 0;
+  background: linear-gradient(90deg, transparent, rgba(214,200,162,0.55), transparent);
+  opacity: 0.8;
+}
+
+.mist {
+  position: absolute;
+  inset: -40px -80px 0 -80px;
+  background:
+    radial-gradient(closest-side at 20% 60%, rgba(255,255,255,0.10), transparent 60%),
+    radial-gradient(closest-side at 70% 40%, rgba(255,255,255,0.08), transparent 65%),
+    radial-gradient(closest-side at 50% 80%, rgba(255,255,255,0.06), transparent 70%);
+  filter: blur(10px);
+  opacity: 0.55;
+  animation: mistDrift 10s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.leaves {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.leaves::before,
+.leaves::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  left: -10%;
+  top: -10%;
+  background:
+    radial-gradient(12px 10px at 10% 30%, rgba(139,30,30,0.55), transparent 60%),
+    radial-gradient(10px 8px at 25% 45%, rgba(139,30,30,0.45), transparent 60%),
+    radial-gradient(14px 12px at 40% 25%, rgba(139,30,30,0.40), transparent 60%),
+    radial-gradient(9px 8px at 58% 40%, rgba(139,30,30,0.35), transparent 60%),
+    radial-gradient(12px 10px at 72% 30%, rgba(139,30,30,0.45), transparent 60%),
+    radial-gradient(10px 9px at 85% 45%, rgba(139,30,30,0.35), transparent 60%);
+  filter: blur(0.2px);
+  transform: translateX(0) translateY(0);
+}
+
+.leaves::before {
+  animation: leavesFloat 11s linear infinite;
+  opacity: 0.7;
+}
+
+.leaves::after {
+  animation: leavesFloat2 14s linear infinite;
+  opacity: 0.55;
+}
+
+.auth-wrap {
+  margin-top: -18px; 
+}
+
+.auth-card {
+  border: 1px solid rgba(214,200,162,0.12);
+}
+
+.auth-footnote {
+  margin: 14px 0 0;
+  opacity: 0.6;
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+@keyframes mistDrift {
+  from { transform: translateX(0) translateY(0); }
+  to   { transform: translateX(-18px) translateY(8px); }
+}
+
+@keyframes leavesFloat {
+  from { transform: translateX(20px) translateY(-10px); }
+  to   { transform: translateX(-30px) translateY(22px); }
+}
+
+@keyframes leavesFloat2 {
+  from { transform: translateX(0) translateY(0); }
+  to   { transform: translateX(-22px) translateY(18px); }
+}

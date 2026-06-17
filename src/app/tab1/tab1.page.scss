@@ -1,0 +1,165 @@
+.hint {
+  margin: 12px 12px 0;
+  padding: 10px 12px;
+  border-radius: 14px;
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.9rem;
+}
+
+.mission-item {
+  --padding-start: 14px;
+  --inner-padding-end: 10px;
+  margin: 8px 10px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.title-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.desc {
+  opacity: 0.85;
+  margin-top: 6px;
+}
+
+.meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.empty {
+  height: 60vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  opacity: 0.75;
+
+  ion-icon {
+    font-size: 42px;
+    margin-bottom: 8px;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  p {
+    margin: 6px 0 0;
+  }
+}
+
+.mission-item {
+  border: 1px solid rgba(214,200,162,0.10);
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+
+.mission-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(214,200,162,0.18);
+  background: rgba(255,255,255,0.05);
+}
+
+.title-row h2 {
+  font-family: var(--km-font-title);
+  letter-spacing: 0.03em;
+}
+
+ion-list {
+  background: transparent;
+  padding-bottom: 18px;
+}
+
+.mission-item {
+  animation: driftIn 0.45s ease both;
+}
+
+.mission-item:nth-child(1) { animation-delay: 0.02s; }
+.mission-item:nth-child(2) { animation-delay: 0.05s; }
+.mission-item:nth-child(3) { animation-delay: 0.08s; }
+.mission-item:nth-child(4) { animation-delay: 0.11s; }
+.mission-item:nth-child(5) { animation-delay: 0.14s; }
+.mission-item:nth-child(6) { animation-delay: 0.17s; }
+.mission-item:nth-child(7) { animation-delay: 0.20s; }
+.mission-item:nth-child(8) { animation-delay: 0.23s; }
+.mission-item:nth-child(9) { animation-delay: 0.26s; }
+.mission-item:nth-child(10){ animation-delay: 0.29s; }
+
+.mission-item {
+  border: 1px solid rgba(214,200,162,0.10);
+  box-shadow: 0 14px 38px rgba(0,0,0,0.50);
+  backdrop-filter: blur(8px);
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.mission-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(214,200,162,0.18);
+  background: rgba(255,255,255,0.05);
+}
+
+.mission-item:active {
+  transform: translateY(0px) scale(0.995);
+}
+
+.title-row h2 {
+  font-family: var(--km-font-title);
+  letter-spacing: 0.03em;
+}
+
+ion-chip {
+  border: 1px solid rgba(214,200,162,0.12);
+}
+
+ion-button[color="primary"] {
+  --box-shadow: 0 14px 28px rgba(139,30,30,0.20);
+}
+
+.empty {
+  height: 62vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 0 22px;
+  opacity: 0.88;
+}
+
+.empty ion-icon {
+  font-size: 54px;
+  margin-bottom: 10px;
+  opacity: 0.9;
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,0.65));
+}
+
+.empty h3 {
+  font-family: var(--km-font-title);
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.empty p {
+  margin: 8px 0 0;
+  opacity: 0.8;
+  line-height: 1.4;
+}
+
+@keyframes driftIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) translateX(6px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+    filter: blur(0);
+  }
+}
+
